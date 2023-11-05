@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body class="text text-secondary bg-dark">
+<script>
+var d=document.getElementById("de");
+    document.getElementById("demo").innerHTML ="Hello : "+ navigator.onLine;
+    return false;
+</script>
+<div class="text text-warning" id="de">
+    <span class="text-warning" id="demo"></span>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+
+            <button class="btn btn-dark text-warning fs-2" type="button" disabled>
+                <span class="spinner-border" role="status" aria-hidden="true"></span>
+                <b><i>Loading Systems....</i></b>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-danger btn btn-outline-dark" aria-current="page" href="#">Home</a>
+                    </li>
+                    <th:block th:if="${user==NULL}">
+                    <li class="nav-item">
+                        <a class="nav-link link-danger btn btn-outline-info" aria-current="page" th:href="@{/userReg}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-danger btn btn-outline-info" aria-current="page" th:href="@{/signin}">Login</a>
+                    </li>
+                    </th:block>
+                </ul>
+                &nbsp
+                <th:block th:if="${user!=NULL}">
+                <span class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn btn-outline-danger">LogOut</button>
+                    </form>
+                </span>
+                </th:block>
+            </div>
+
+        </div>
+    </nav>
+    <br><br><br> &nbsp;&nbsp;
+    <div class="text-center bg-dark border border-3 border-danger" style="height:80px;display:block;">
+        &nbsp; <span class="fs-1 text-danger"><b><i>Loading </i></b></span>
+        <span class="fs-1 text-success"><b><i>System</i></b></span>
+    </div>
+    &nbsp;
+    <div class=" bg-dark border border-3 border-danger" style="height:120px;display:block;">
+        &nbsp; <img src="https://cdna.artstation.com/p/assets/images/images/000/140/234/large/vipul-jadhav-jai-malhar-copy.jpg?1406021699" alt="Not found" style="height:100px;width:120px;position:relative;top:7px;">
+        &nbsp;   &nbsp;<span class="fs-4 text-secondary"><i> !! Welcome to Loading System !! Satta Matka Fast Result</i></span>
+    </div>
+    &nbsp;
+    <div class="bg-dark border border-3 border-danger" style="height:120px;width:100%;display:block;">
+      <div class="row">
+          <div class="col mb-3 offset-md-1">
+              <b><i><span class="text-info fs-4">Today-Lucky-Number</span></i></b>
+              <b><p class="text-secondary text-center fs-2">3-8-6-1</p></b>
+          </div>
+              <div class="spinner-grow text-danger" style="position:relative;top:35px;left:135px;">
+              </div>
+          <div class="col mb-3 offset-md-4" style=" width:60%">
+              <b><i> <span class="text-warning fs-4">Final-Number</span></i></b>
+              <div class="marquee" style="overflow:scroll; height:70px; width:250px;">
+                  <p>
+                      MILAN MORNING - 6<br>SRIDEVI - 2<br>KALYAN MORNING - 6<br>PADMAVATI - 2<br>MADHURI - 8<br>SRIDEVI MORNING - 4<br>KARNATAKA DAY - 4<br>TIME BAZAR - 8<br>MILAN DAY - ...<br>KALYAN - 4<br>SRIDEVI NIGHT - 6<br>MADHURI NIGHT - 6<br>MILAN NIGHT - 4<br>RAJDHANI NIGHT - 4<br>MAIN BAZAR - 2<br>KALYAN NIGHT - 2<br>OLD MAIN MUMBAI - 2<br>MADHUR DAY - 4<br>MADHUR NIGHT - 2<br>KUBER - 4<br>	</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+<!-- Footer Section -->
+    <div class="d-flex justify-content-center">
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <button class="btn btn-outline-info refresh-btn btm-btn-f"onclick="window.location.reload()">Refresh</button>
+    <!--thoughts-->
+    <div>
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <p>The truth is not a stick with which to beat yourself.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer text-light">
+                <cite title="Source Title">shivjay</cite>
+            </figcaption>
+        </figure>
+    </div>
+    <!--Footer section -->
+    <div class="footer text-warning text-center">
+        <button style="font-size:20px;width:400px" class="btn btn-outline-dark">© Copyright 2000. JaanDeveloper.</button>
+    </div>
+
+</div>
+</body>
+
+</html>

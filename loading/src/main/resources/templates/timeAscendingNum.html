@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>All Load</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <style>
+  td{
+  position:relative;
+  top:0px;
+  left:-45px;
+  color:yellow;
+  }
+  thead{
+  font-size:20px;
+  }
+</style>
+</head>
+<body class="bg bg-dark text-info">
+<br><hr>
+<div class="row">
+  <div class="col">
+    <a th:href="@{/admin/profile}"><button class="btn btn-outline-info">-Home Page-</button></a>
+  </div>
+  <div class="col">
+    <a th:href="@{/admin/kalyanAscendingNumber}"><button class="btn btn-outline-info">-Kalyan Market -</button></a>
+  </div>
+  <div class="col">
+    <a th:href="@{/admin/mainAscendingNumber}"><button class="btn btn-outline-info">-Main Market -</button></a>
+  </div>
+  <div class="col">
+    <a th:href="@{/admin/milanAscendingNumber}"><button class="btn btn-outline-info">-Milan Market -</button></a>
+  </div>
+  <div class="col">
+    <a th:href="@{/admin/rajdhaniAscendingNumber}"><button class="btn btn-outline-info">-Rajdhani Market-</button></a>
+  </div>
+  <div class="col">
+    <a th:href="@{/gamePage}"><button class="btn btn-outline-info">-Single Loading -</button></a>
+  </div>
+</div>
+<h2 class="heading text-center">-Time Market -</h2>
+<hr>
+<div class="container">
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-info">0 to </thead>
+    </tr>
+    <tr th:each="list0:${list0}">
+      <td class="text-warning" th:text="${list0}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-info">10 to </thead>
+    </tr>
+    <tr th:each="list1:${list1}">
+      <td class="text-warning" th:text="${list1}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-info">20 to </thead>
+    </tr>
+    <tr th:each="list2:${list2}">
+      <td class="text-warning" th:text="${list2}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">30 to </thead>
+    </tr>
+    <tr th:each="list3:${list3}">
+      <td class="text-warning" th:text="${list3}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">40 to </thead>
+    </tr>
+    <tr th:each="list4:${list4}">
+      <td class="text-warning" th:text="${list4}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">50 to </thead>
+    </tr>
+    <tr th:each="list5:${list5}">
+      <td class="text-warning" th:text="${list5}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">60 to </thead>
+    </tr>
+    <tr th:each="list6:${list6}">
+      <td class="text-warning" th:text="${list6}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">70 to </thead>
+    </tr>
+    <tr th:each="list7:${list7}">
+      <td class="text-warning" th:text="${list7}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">80 to </thead>
+    </tr>
+    <tr th:each="list8:${list8}">
+      <td class="text-warning" th:text="${list8}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-warning">90 to </thead>
+    </tr>
+    <tr th:each="list9:${list9}">
+      <td class="text-warning" th:text="${list9}"></td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>

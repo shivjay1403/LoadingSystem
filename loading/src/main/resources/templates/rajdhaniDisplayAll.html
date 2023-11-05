@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Playing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    const searchFun=()=>
+{
+   var myInput=document.getElementById("myInput").value.toUpperCase();
+       //take input from user
+    let myTable=document.getElementById('myTable');
+        // to get tables data
+    let getDataFromRow=myTable.getElementsByTagName('tr');
+        // get the rows data by the help of table id
+var sum=0;
+    for(var i=0;i<getDataFromRow.length;i++)
+    {
+        let getDataFromColSec=getDataFromRow[i].getElementsByTagName('td')[1];
+        let val=getDataFromRow[i].getElementsByTagName('td')[2];
+        if(getDataFromColSec)
+            {
+                var textValue2=getDataFromColSec.textContent || getDataFromColSec.innerHTML;
+                if(textValue2.toUpperCase().indexOf(myInput) > -1 && textValue2.startsWith(myInput))
+                {      // compare value of user input and table data...
+                     getDataFromRow[i].style.display="";
+                     var quantity =val.innerHTML;
+                    var res=parseFloat(quantity);
+                     sum=sum+res;
+                }else{
+                      getDataFromRow[i].style.display="none";
+                    }
+            }
+    }
+    document.getElementById("msg").innerHTML=sum;
+};
+</script>
+</head>
+<body class="bg-dark text-warning">
+<div class="container">
+  <h1 class="text-center">--TOTAL GAME OF RAJDHANI BAZAAR--</h1>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <b><span class="text-success border border-danger rounded-start" style="font-size:35px;height:50px;width:250px;" id="msg"></span></b>
+    </div>
+    <div class="col">
+      <a th:href="@{/admin/profile}"><button class="btn btn-outline-info">-Home Page-</button></a>
+    </div>
+    <div class="col">
+      <a th:href="@{/rajdhaniLetsPlay}"><button class="btn btn-outline-success">-Let`s Play Now-</button></a>
+    </div>
+    <div class="col">
+      <a th:href="@{/admin/rajdhaniClearData}"><button class="btn btn-outline-danger">-Clear All Data-</button></a>
+    </div>
+    <div class="col">
+      <input type="text" style="height:40px;width:200px;" class="text-warning border border-success bg-dark" onkeyup="searchFun()" placeholder="Search Here.." id="myInput">
+    </div>
+  </div><hr>
+  <table id="myTable" class="table table-dark border-light">
+    <tr >
+      <th class="text-info">-ID-</th>
+      <th class="text-warning">-PLAY NUMBER-</th>
+      <th class="text-success">-AMOUNT-</th>
+      <th class="text-danger">-ACTIONS-</th>
+    </tr>
+    <tr th:each="play:${plays}">
+      <td class="text-info" th:text="${play.loadingId}"></td>
+      <td class="text-warning" th:text="${play.loadNum}"></td>
+      <td class="text-success" th:text="${play.playAmt}"></td>
+      <td>
+        <a th:href="@{/rajdhaniDeleteRecord/{id}(id=${play.loadingId})}"><button class="btn btn-danger">Delete</button></a>
+        <a th:href="@{/rajdhaniUpdateRecord/{model}(model=${play.loadingId})}"><button class="btn btn-primary">Update</button></a>
+      </td>
+    </tr>
+    <tr th:each="amt:${totals}">
+      <td class="text-success" th:text="${amt.playAmt}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

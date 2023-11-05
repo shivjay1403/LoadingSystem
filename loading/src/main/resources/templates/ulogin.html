@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body class="bg-dark">
+<div class="container border-danger">
+    <br>
+    <th:block th:if="${session.usrNotFoundMsg}">
+        <i> <span class="spinner-grow text-danger fs-6" style="width:250px;position:absolute;top:30px; height: 70px;">[[${session.usrNotFoundMsg}]]</span></i><br><br>
+        <th:block th:text="${@userRegisterServiceImp.removeUsrNotFoundMsg()}"></th:block>
+    </th:block><br><br>
+    <th:block th:if="${param.error}">
+        <div class="" style="width: 150px; position:absolute; top:190px; height: 40px;">
+           <a class="btn btn-outline-danger" th:href="@{/forgetPass}">Forget Password</a><br> <br>
+            <a class="btn btn-outline-success" th:href="@{/userReg}">Create New Account ?</a>
+        </div>
+    </th:block><br>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card bg-dark border-danger">
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col mb-3 text-primary ">
+                            <h2 class="text-secondary fs-1">Welcome</h2>
+                            <span class="text-secondary fs-6">Check you are Registered ?</span>
+                            <hr class="text-danger">
+                            <span class="text-danger spinner-grow bg-dark" style="width: 140px; height: 20px;" id="msg"></span>
+                            <th:block th:if="${param.error}">
+                                <div class="spinner-grow bg-dark" style="width: 150px; height: 40px;">
+                                <span class="text-center text-danger fs-5">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</span>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${param.logout}">
+                                <div class="spinner-grow bg-dark rounded border border-success" style="width: 170px; height: 30px;">
+                                    <span class="text-center text-success fs-5">LogOut Successful</span>
+                                </div>
+                            </th:block>
+                            <th:block th:if="${session.passChangeMsg}">
+                                <div class="spinner-grow bg-dark" style="width: 250px; height: 40px;">
+                                    <i> <span class="text-success fs-6">[[${session.passChangeMsg}]]</span></i>
+                                    <th:block th:text="${@userRegisterServiceImp.removePassChangeMassage()}"></th:block>
+                                </div>
+                            </th:block>
+                        </div>
+                        <div class="col mb-3  text-center  spinner-grow offset-md-2 border border-success rounded mh-100" style="width: 200px; color:black; height: 100px; background-color:pink;">
+                            <span class="fs-1">V</span>
+                            <span class="fs-1">S</span><br>
+                            <span class="fs-5">Loading System</span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-danger">
+                <div class="card-body">
+                    <form th:action="@{/ulogin}" onsubmit="return uRegVal()" method="post" th:object="${uCheck}">
+                        <div class="row">
+
+                            <div class="col mb-3">
+                                <span class="text-warning">-- UserName</span>
+                                <input type="text" class="form-control bg-dark text-danger" maxlength="15" minlength="5" id="username" name="username" autofocus required autocomplete="off"  placeholder="Enter mobile Number" aria-label="Enter mobile Number" th:field="*{username}" >
+                            </div>
+                        <hr class="text-danger">
+                            <div class="col mb-3">
+                                <span class="text-warning text-center">-- Password</span>
+                                <input type="password" class="form-control bg-dark text-success" minlength="5" maxlength="15" id="password" name="password" required   placeholder="Enter Password" aria-label="Enter password" th:field="*{password}" >
+                            </div>
+
+                        </div>
+
+                        <hr class="text-danger">
+
+                        <div class="row text-center">
+                            <div class="col">
+                                <button class="btn btn-outline-success" onclick="uRegVal()">-SUBMIT-</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function uRegVal(){
+        var d=document.getElementById("username").value;
+        if(d.length>=15){
+            document.getElementById("msg").innerHTML="Username Greater than 15 character";
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>

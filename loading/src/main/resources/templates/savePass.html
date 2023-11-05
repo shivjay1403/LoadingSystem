@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body class="bg-dark">
+<div class="container border-danger">
+  <br>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card bg-dark border-danger">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col mb-3 text-primary ">
+              <h2 class="text-secondary fs-1">Welcome</h2>
+              <span class="text-secondary fs-6">Check you are Registered ?</span>
+              <hr class="text-danger">
+            </div>
+            <div class="col mb-3  text-center  spinner-grow offset-md-2 border border-success rounded mh-100" style="width: 200px; color:black; height: 100px; background-color:pink;">
+              <span class="fs-1">V</span>
+              <span class="fs-1">S</span><br>
+              <span class="fs-4">Loading System</span>
+            </div>
+          </div>
+        </div>
+        <hr class="text-danger">
+        <div class="card-body">
+          <form th:action="@{/updatePass}" method="post" onsubmit="return msg()" th:object="${fPass}">
+            <div class="row">
+              <div class="col mb-3">
+                    <span class="text-warning">--Enter Password</span>
+                    <input type="text" class="form-control bg-dark text-danger" maxlength="15" minlength="5" id="password" name="password" autofocus required autocomplete="off"  placeholder="Enter mobile Number" aria-label="Enter mobile Number" th:field="*{password}" >
+              </div>
+            </div>
+
+            <hr class="text-danger">
+
+            <div class="row text-center">
+              <div class="col">
+                <button class="btn btn-outline-success" onclick="msg()">-SUBMIT-</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function msg()
+    {
+    setTimeout(function()
+        {
+            alert("Welcome to home after 2 seconds"3,2000);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::body})"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head>
+  <meta charset="UTF-8">
+  <title>All Load</title>
+  <style>
+  .td{
+  position:relative;
+  top:5px;
+  left:-45px;
+  color:pink;
+  }
+  .t{
+  font-size:25px;
+  color:pink;
+  }
+  #span{
+  font-size:29px;}
+  .profit{
+  color:green;
+  }
+  .loss{
+  color:red;
+  }
+</style>
+</head>
+<body class="bg bg-dark ">
+<br><hr>
+<div class="row">
+  <div class="col">
+    <a th:href="@{/admin/profile}"><button class="btn btn-outline-info">-Home Page-</button></a>
+  </div> <div class="col">
+  <span></span>
+</div>
+  <div class="col">
+    <marquee><span id="span" class="text-danger">JaanDeveloper</span></marquee>
+</div>
+  <div class="col">
+    <span></span>
+    </div>
+  <div class="col">
+    <a th:href="@{/gamePage}"><button class="btn btn-outline-info">-Single Loading -</button></a>
+  </div>
+</div><br>
+<h2 class="heading text-secondary text-center">- Let`s Fun -</h2>
+<hr>
+<div class="container">
+  <h2 class="text-secondary">Loading Table</h2>
+  <table class="table table-dark table-hover text-secondary">
+    <thead>
+    <tr>
+      <th scope="col">Sr/No</th>
+      <th scope="col">Markets Name</th>
+      <th scope="col">No = MaxAmt</th>
+      <th scope="col" class="text-success">No = MinAmt</th>
+      <th scope="col" class="text-danger">Total Game</th>
+      <th scope="col" class="text-danger">Profit/Loss</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Kalyan</td>
+      <td>
+        <span  th:text="${kalyanNum}"></span>
+        <span>=</span>
+        <span  th:text="${kalyanMax}"></span>
+        <span>rs</span><br>
+        <div class="card" th:class="${(totalKalyanGame)-(kalyanMax*90)>totalKalyanGame}?text-success:text-danger">
+          <span class="card-body" th:text="${kalyanMax*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span  th:text="${kalyanMinNum}"></span>
+        <span>=</span>
+        <span  th:text="${kalyanMin}"></span>
+        <span class="text-secondary">rs</span><br>
+        <div class="card" th:class="${kalyanLowPay<totalKalyanGame}?text-success:text-danger">
+          <span class="card-body" th:text="${kalyanMin*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span class="text-danger" th:text="${totalKalyanGame}"></span>
+        <span class="text-secondary">rs</span>
+      </td>
+      <td>
+        <div class="card" th:class="${kalyanProfitLoss>0}?text-success:text-danger">
+          <span class="card-body" th:text="${kalyanProfitLoss}"></span>
+          <span class="text-secondary" >rs</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Main</td>
+      <td>
+        <span th:text="${mainNum}"></span>
+        <span>=</span>
+        <span  th:text="${mainMax}"></span>
+        <span>rs</span><br>
+        <div class="card" th:class="${(totalMainGame)-(mainMax*90)>totalMainGame}?text-success:text-danger">
+          <span class="card-body" th:text="${mainMax*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span  th:text="${mainMinNum}"></span>
+        <span>=</span>
+        <span  th:text="${mainMin}"></span>
+        <span class="text-secondary">rs</span><br>
+        <div class="card" th:class="${mainLowPay<totalMainGame}?text-success:text-danger">
+          <span class="card-body" th:text="${mainMin*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span class="text-danger"  th:text="${totalMainGame}"></span>
+        <span class="text-secondary">rs</span>
+      </td>
+      <td>
+        <div class="card" th:class="${mainProfitLoss>0}?text-success:text-danger">
+          <span class="card-body" th:text="${mainProfitLoss}"></span>
+          <span class="text-secondary" >rs</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Milan</td>
+      <td>
+        <span  th:text="${milanNum}"></span>
+        <span>=</span>
+        <span  th:text="${milanMax}"></span>
+        <span>rs</span><br>
+        <div class="card" th:class="${(totalMilanGame)-(milanMax*90)>totalMilanGame}?text-success:text-danger">
+          <span class="card-body" th:text="${milanMax*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span  th:text="${milanMinNum}"></span>
+        <span>=</span>
+        <span  th:text="${milanMin}"></span>
+        <span class="text-secondary">rs</span><br>
+        <div class="card" th:class="${milanLowPay<totalMilanGame}?text-success:text-danger">
+          <span class="card-body" th:text="${milanMin*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span class="text-danger" th:text="${totalMilanGame}"></span>
+        <span class="text-secondary">rs</span>
+      </td>
+      <td>
+        <div class="card" th:class="${milanProfitLoss>0}?text-success:text-danger">
+          <span class="card-body" th:text="${milanProfitLoss}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Rajdhani</td>
+      <td>
+        <span  th:text="${rajdhaniNum}"></span>
+        <span>=</span>
+        <span  th:text="${rajdhaniMax}"></span>
+        <span>rs</span><br>
+        <div class="card" th:class="${(totalRajdhaniGame)-(rajdhaniMax*90)>totalRajdhaniGame}?text-success:text-danger">
+          <span class="card-body" th:text="${rajdhaniMax*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span th:text="${rajdhaniMinNum}"></span>
+        <span>=</span>
+        <span th:text="${rajdhaniMin}"></span>
+        <span class="text-secondary">rs</span><br>
+        <div class="card" th:class="${rajdhaniLowPay<totalRajdhaniGame}?text-success:text-danger">
+          <span class="card-body" th:text="${rajdhaniMin*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span class="text-danger" th:text="${totalRajdhaniGame}"></span>
+        <span class="text-secondary">rs</span>
+      </td>
+      <td>
+        <div class="card" th:class="${rajdhaniProfitLoss>0}?text-success:text-danger">
+        <span class="card-body" th:text="${rajdhaniProfitLoss}"></span>
+        <span class="text-secondary" >rs</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Time</td>
+      <td>
+        <span  th:text="${timeNum}"></span>
+        <span>=</span>
+        <span  th:text="${timeMax}"></span>
+        <span>rs</span><br>
+        <div class="card" th:class="${(totalTimeGame)-(timeMax*90)>totalTimeGame}?text-success:text-danger">
+          <span class="card-body" th:text="${timeMax*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span  th:text="${timeMinNum}"></span>
+        <span>=</span>
+        <span th:text="${timeMin}"></span>
+        <span class="text-secondary">rs</span><br>
+        <div class="card" th:class="${timeLowPay<totalTimeGame}?text-success:text-danger">
+          <span class="card-body" th:text="${timeMin*90}"></span>
+          <span class="text-secondary">rs</span>
+        </div>
+      </td>
+      <td>
+        <span class="text-danger" th:text="${totalTimeGame}"></span>
+        <span class="text-secondary">rs</span>
+      </td>
+      <td>
+        <div class="card" th:class="${timeProfitLoss>0}?text-success:text-danger">
+          <span class="card-body" th:text="${timeProfitLoss}"></span>
+          <span class="text-secondary" >rs</span>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <hr class="text-danger"><br>
+  <h2 class="text-secondary">All Data</h2>
+  <hr class="text-danger"><br>
+  <table class="d-inline text-info">
+    <tr>
+    <thead class="text-info">Kalyan</thead>
+    </tr>
+    <tr th:each="kalyan:${kalyan}">
+      <td class="td" th:text="${kalyan}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline text-info">
+    <tr>
+      <thead class="text-info">Main</thead>
+    </tr>
+    <tr th:each="main:${main}">
+      <td class="td"  th:text="${main}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline">
+    <tr>
+      <thead class="text-info-" >Milan</thead>
+    </tr>
+    <tr th:each="milan:${milan}">
+      <td  class="td" th:text="${milan}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline text-info">
+    <tr>
+      <thead class="text text-info" >Rajdhani</thead>
+    </tr>
+    <tr th:each="rajdhani:${rajdhani}">
+      <td class="td" th:text="${rajdhani}"></td>
+    </tr>
+  </table>
+
+  <table class="d-inline text-info">
+    <tr>
+      <thead class="text text-info">Time</thead>
+    </tr>
+    <tr th:each="time:${time}">
+      <td class="td" th:text="${time}"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
